@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ParkMe_WepApi.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -10,30 +11,21 @@ namespace ParkMe_WepApi.Controllers
     public class OrderController : ApiController
     {
         // GET: api/Order
-        public IEnumerable<string> Get()
+       
+        [HttpPost]
+        public IEnumerable<OrderInfoModel> GetOrders([FromBody]string token)
         {
-            return new string[] { "value1", "value2" };
+            throw new Exception();
         }
-
-        // GET: api/Order/5
-        public string Get(int id)
+        [HttpPost]
+        public OrderInfoModel GetOrderById([FromBody]string token, [FromBody]string orderId)
         {
-            return "value";
+            throw new Exception();
         }
-
-        // POST: api/Order
-        public void Post([FromBody]string value)
+        [HttpPost]
+        public bool ConfirmTaskById([FromBody]string token, [FromBody]string orderId, [FromBody]string taskId)
         {
-        }
-
-        // PUT: api/Order/5
-        public void Put(int id, [FromBody]string value)
-        {
-        }
-
-        // DELETE: api/Order/5
-        public void Delete(int id)
-        {
+            throw new Exception();
         }
     }
 }

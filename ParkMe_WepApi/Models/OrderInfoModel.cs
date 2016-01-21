@@ -7,5 +7,9 @@ namespace ParkMe_WepApi.Models
 {
     public class OrderInfoModel
     {
+        public string ID { get; set; }
+
+        public List<TaskInfoModel> MyProperty { get; set; }
+
     }
 }
