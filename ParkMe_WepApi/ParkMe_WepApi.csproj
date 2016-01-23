@@ -48,6 +48,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -140,6 +141,75 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
+    <Compile Include="DAL\E_Customers.cs">
+      <DependentUpon>ParkMe.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\E_Invoces.cs">
+      <DependentUpon>ParkMe.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\E_Orders.cs">
+      <DependentUpon>ParkMe.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\E_ParkingStations.cs">
+      <DependentUpon>ParkMe.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\E_Tasks.cs">
+      <DependentUpon>ParkMe.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\E_Valets.cs">
+      <DependentUpon>ParkMe.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\E_Vehicles.cs">
+      <DependentUpon>ParkMe.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\LT_DriverLicenseCategories.cs">
+      <DependentUpon>ParkMe.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\LT_OrderStatuses.cs">
+      <DependentUpon>ParkMe.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\LT_TaskStatuses.cs">
+      <DependentUpon>ParkMe.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\LT_TaskTypes.cs">
+      <DependentUpon>ParkMe.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\LT_VehicleColors.cs">
+      <DependentUpon>ParkMe.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\LT_VehicleTypes.cs">
+      <DependentUpon>ParkMe.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\LT_Violations.cs">
+      <DependentUpon>ParkMe.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\ParkMe.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ParkMe.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\ParkMe.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ParkMe.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\ParkMe.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ParkMe.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\REL_ValetsViolations.cs">
+      <DependentUpon>ParkMe.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>ParkMe.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sp_helpdiagrams_Result.cs">
+      <DependentUpon>ParkMe.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\sysdiagram.cs">
+      <DependentUpon>ParkMe.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -149,6 +219,20 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\ParkmeDB.mdf" />
+    <Content Include="App_Data\ParkmeDB_log.ldf">
+      <DependentUpon>ParkmeDB.mdf</DependentUpon>
+    </Content>
+    <Content Include="DAL\ParkMe.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ParkMe.edmx</DependentUpon>
+      <LastGenOutput>ParkMe.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DAL\ParkMe.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ParkMe.edmx</DependentUpon>
+      <LastGenOutput>ParkMe.cs</LastGenOutput>
+    </Content>
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
@@ -164,13 +248,20 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-    <Folder Include="DAL\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
+    <EntityDeploy Include="DAL\ParkMe.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ParkMe.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="DAL\ParkMe.edmx.diagram">
+      <DependentUpon>ParkMe.edmx</DependentUpon>
+    </Content>
     <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
