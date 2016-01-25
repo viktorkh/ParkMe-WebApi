@@ -251,5 +251,10 @@ namespace ParkMe_WepApi.DAL
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("spCreateOrder1", customerPhoneParameter, orderDateParameter, orderAddressParameter);
         }
+    
+        public virtual ObjectResult<spGetAllOrders_Result> spGetAllOrders()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<spGetAllOrders_Result>("spGetAllOrders");
+        }
     }
 }

@@ -364,6 +364,7 @@ warning 6002: The table/view 'TestDB.dbo.REL_ValetsViolations' does not have a p
         <Function Name="spFinishTask" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ValetID" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="spGetAllOrders" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="spGetOpenOrders" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="spGetStatistics" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="TestDBModelStoreContainer">
@@ -895,6 +896,7 @@ warning 6002: The table/view 'TestDB.dbo.REL_ValetsViolations' does not have a p
             <Parameter Name="OrderDate" Mode="In" Type="DateTime" />
             <Parameter Name="OrderAddress" Mode="In" Type="String" />
           </FunctionImport>
+          <FunctionImport Name="spGetAllOrders" ReturnType="Collection(TestDBModel.spGetAllOrders_Result)" />
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -906,6 +908,15 @@ warning 6002: The table/view 'TestDB.dbo.REL_ValetsViolations' does not have a p
           <Property Type="Int32" Name="ID" Nullable="false" />
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="spGetAllOrders_Result">
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Int32" Name="CustomerID" Nullable="false" />
+          <Property Type="String" Name="PhoneNumber" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="OrderStatusID" Nullable="false" />
+          <Property Type="String" Name="Description" Nullable="false" MaxLength="50" />
+          <Property Type="DateTime" Name="StartDateTime" Nullable="false" Precision="23" />
+          <Property Type="DateTime" Name="FinishDateTime" Nullable="true" Precision="23" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1118,6 +1129,19 @@ warning 6002: The table/view 'TestDB.dbo.REL_ValetsViolations' does not have a p
           <FunctionImportMapping FunctionImportName="spGetOpenOrders" FunctionName="TestDBModel.Store.spGetOpenOrders" />
           <FunctionImportMapping FunctionImportName="spGetStatistics" FunctionName="TestDBModel.Store.spGetStatistics" />
           <FunctionImportMapping FunctionImportName="spCreateOrder1" FunctionName="TestDBModel.Store.spCreateOrder" />
+          <FunctionImportMapping FunctionImportName="spGetAllOrders" FunctionName="TestDBModel.Store.spGetAllOrders">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TestDBModel.spGetAllOrders_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="OrderStatusID" ColumnName="OrderStatusID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="StartDateTime" ColumnName="StartDateTime" />
+                <ScalarProperty Name="FinishDateTime" ColumnName="FinishDateTime" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

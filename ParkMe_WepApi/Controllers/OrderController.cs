@@ -15,10 +15,24 @@ namespace ParkMe_WepApi.Controllers
     {
         // GET: api/Order
        
-        [HttpPost]
-        public IEnumerable<OrderInfoModel> GetOrders([FromBody]string token)
+        
+        public IEnumerable<spGetAllOrders_Result> GetOrders([FromBody]string token)
         {
-            throw new Exception();
+          
+            IEnumerable<spGetAllOrders_Result> result = null;
+            using (TestDBEntities1 context = new TestDBEntities1())
+            {
+                //  result = context.spCreateOrder(token, time, orderAddress,returnVal:d).ToString();
+                result = context.spGetAllOrders().ToArray();//< OrderInfoModel>();
+
+                
+               
+            }
+
+
+            return result;
+
+            
         }
         [HttpPost]
         public OrderInfoModel GetOrderById([FromBody]string token, [FromBody]string orderId)

@@ -201,6 +201,9 @@
     <Compile Include="DAL\REL_ValetsViolations.cs">
       <DependentUpon>ParkMe.tt</DependentUpon>
     </Compile>
+    <Compile Include="DAL\spGetAllOrders_Result.cs">
+      <DependentUpon>ParkMe.tt</DependentUpon>
+    </Compile>
     <Compile Include="DAL\sp_helpdiagramdefinition_Result.cs">
       <DependentUpon>ParkMe.tt</DependentUpon>
     </Compile>
